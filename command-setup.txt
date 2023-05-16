@@ -10,9 +10,12 @@ npm install     // install the node dependancies
 
 npm install -D tailwindcss     // install tailwind
 
-npx tailwindcss init    // initialize the tailwind
+npx tailwindcss init    // creates the tailwind.config.js file
 
+// add the paths to your tailwind config under content
 
+// add the three directives to the main css file for the project
 
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch // This builds the output.css file each time something changes
 
 npm run dev   // runs the project
