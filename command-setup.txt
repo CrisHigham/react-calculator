@@ -1,0 +1,18 @@
+npm create vite@latest  // follow the prompts to setup the project
+
+// cd into the project directory
+
+npm install     // install the node dependancies
+
+// Add the volta dependencies to the package.json file
+
+// Tailwind
+
+npm install -D tailwindcss     // install tailwind
+
+npx tailwindcss init    // initialize the tailwind
+
+
+
+
+npm run dev   // runs the project
