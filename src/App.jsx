@@ -5,11 +5,16 @@ function App() {
 
   return (
     <>
-      <div className="bg-slate-600 m-4">
-          <p>sony</p>
-          <Display />
-          <Keypad />
-      </div>
+        <div className="container max-w-xs mx-auto">
+            <div className="bg-slate-600 max-w-xl rounded p-1 m-4">
+                <div className="m-4">
+                    <Display />
+                    <Keypad />
+                </div>
+
+            </div>
+        </div>
+
     </>
   )
 }

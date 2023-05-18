@@ -4,8 +4,8 @@ function Display() {
 
   return (
     <>
-      <div className="bg-slate-400 m-4">
-          <p>This is the display</p>
+      <div className="bg-slate-400 my-2 rounded">
+          <p className="p-2 text-right">0.</p>
       </div>
     </>
   )
