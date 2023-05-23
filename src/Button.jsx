@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {useReducer, useEffect} from "react";
 
 const buttonStyle = {
     normal: 'bg-slate-300 hover:bg-slate-400',
@@ -7,10 +8,34 @@ const buttonStyle = {
     operator: 'bg-teal-400 hover:bg-teal-500',
 }
 
+function buttonReducer(display, action) {
+    switch(action.type){
+        case 'number':{
+            return action.value;
+        }
+    }
+}
+
 const Button = (props) => {
+
+    const [display, dispatch] = useReducer(buttonReducer, '');
+
+    useEffect(() => {
+        console.log('display:', display);
+    }, [display]);
+
+    function handleClick(buttonText){
+        dispatch({
+            type: 'number',
+            value: buttonText,
+        });
+    }
+
+
+
   return (
       <button className={`flex flex-col justify-center text-center py-2 rounded-md h-full w-full font-mono ${buttonStyle[props.style]} ${props.additionalClasses}`}>
-          <div className={""}>{props.text}</div>
+          <div onClick={()=>handleClick(props.text)}>{props.text}</div>
       </button>
   )
 }
