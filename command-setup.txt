@@ -16,6 +16,6 @@ npx tailwindcss init    // creates the tailwind.config.js file
 
 // add the three directives to the main css file for the project
 
-npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch // This builds the output.css file each time something changes
+npx tailwindcss -i ./index.css -o ./dist/calculator.css --watch // This builds the output.css file each time something changes
 
 npm run dev   // runs the project

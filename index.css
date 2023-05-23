@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: #1e293b;
+@layer base {
+    html {
+        font-family: offside, system-ui, monospace;
+    }
 }
+
+@layer components {
+    body{
+        @apply bg-slate-800;
+    }
+}
+
+@layer utilities{
+    @font-face {
+        font-family: 'offside';
+        src: url('/src/fonts/offside.ttf') format('truetype');
+    }
+}
+
