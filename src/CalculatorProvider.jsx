@@ -29,7 +29,6 @@ function buttonReducer(display, action) {
             } else {
                 return display + action.value;
             }
-
         }
         case 'clear':{
             return '0';

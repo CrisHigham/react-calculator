@@ -7,7 +7,7 @@ function Keypad() {
       <div className="grid grid-cols-4 grid-flow-row gap-4 bg-blue-800 rounded p-2">
           <Button text = {"%"} style={"operator"}/>
           <Button text = {"/"} style={"operator"}/>
-          <Button text = {"x"} style={"operator"}/>
+          <Button text = {"*"} style={"operator"}/>
           <Button text = {"-"} style={"operator"}/>
           <Button text = {"7"}/>
           <Button text = {"8"}/>
