@@ -1,5 +1,5 @@
 import {useContext} from 'react';
-import {DisplayContext} from "./DisplayContext.js";
+import {DisplayContext} from "./CalculatorProvider.jsx";
 
 function Display() {
     const display = useContext(DisplayContext);
