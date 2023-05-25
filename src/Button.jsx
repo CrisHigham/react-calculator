@@ -3,7 +3,7 @@ import {useContext} from "react";
 import {DisplayDispatchContext} from "./CalculatorProvider.jsx";
 
 const buttonStyle = {
-    normal: 'bg-slate-300 hover:bg-slate-400',
+    number: 'bg-slate-300 hover:bg-slate-400',
     clear: 'bg-red-400 hover:bg-red-500',
     equal: 'bg-amber-400 hover:bg-amber-500',
     operator: 'bg-teal-400 hover:bg-teal-500',
@@ -14,7 +14,7 @@ const Button = (props) => {
 
     function handleClick(buttonText){
         dispatch({
-            type: 'number',
+            type: props.style,
             value: buttonText,
         });
     }
@@ -33,7 +33,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-    style: "normal",
+    style: "number",
     additionalClasses: "",
 };
 
