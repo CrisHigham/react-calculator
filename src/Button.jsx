@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import {useContext} from "react";
-import {DisplayDispatchContext} from "./CalculatorProvider.jsx";
+import {DisplayDispatchContext, OperatorFlagActionContext, OperatorFlagContext} from "./CalculatorProvider.jsx";
 
 const buttonStyle = {
     number: 'bg-slate-300 hover:bg-slate-400',
@@ -11,11 +11,24 @@ const buttonStyle = {
 
 const Button = (props) => {
     const dispatch = useContext(DisplayDispatchContext);
+    const operatorFlag = useContext(OperatorFlagContext);
+    const operatorFlagAction = useContext(OperatorFlagActionContext);
 
     function handleClick(buttonText){
+        if ((props.style == "equal")){
+            operatorFlagAction({
+                value: true,
+            });
+        } else if(operatorFlag == true) {
+            operatorFlagAction({
+                value: false,
+            });
+        }
+
         dispatch({
             type: props.style,
             value: buttonText,
+            flag: operatorFlag,
         });
     }
 
