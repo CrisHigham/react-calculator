@@ -20,9 +20,9 @@ const Button = (props) => {
     }
 
   return (
-      <button className={`flex flex-col justify-center text-center py-2 rounded-md h-full w-full font-mono ${buttonStyle[props.style]} ${props.additionalClasses}`}>
-          <div onClick={()=>handleClick(props.text)}>{props.text}</div>
-      </button>
+      <button
+          className={`flex flex-col justify-center text-center py-2 rounded-md h-full w-full font-mono ${buttonStyle[props.style]} ${props.additionalClasses}`}
+          onClick={()=>handleClick(props.text)}>{props.text}</button>
   )
 }
 
