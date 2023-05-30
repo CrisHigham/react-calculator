@@ -1,12 +1,12 @@
 import {useContext} from 'react';
-import {DisplayContext} from "./CalculatorProvider.jsx";
+import {StateContext} from "./CalculatorProvider.jsx";
 
 function Display() {
-    const display = useContext(DisplayContext);
+    const state = useContext(StateContext);
       return (
         <>
           <div className="bg-slate-400 my-2 rounded">
-              <p className="p-2 text-right">{display}</p>
+              <p className="p-2 text-right">{state.display}</p>
           </div>
         </>
       )

@@ -2,61 +2,56 @@ import { createContext, useReducer} from 'react';
 import PropTypes from "prop-types";
 import {evaluate} from "mathjs";
 
-export const DisplayContext = createContext(1);
-export const DisplayDispatchContext = createContext(null);
-export const OperatorFlagContext = createContext(false)
-export const OperatorFlagActionContext = createContext(null);
+export const StateContext = createContext({display: '0', evaluationString: ''});
+export const StateDispatchContext = createContext(null);
 
 export function DisplayProvider({ children }) {
-    const [operatorFlag, operatorFlagAction] = useReducer(operatorFlagReducer, false );
-    const [display, dispatch] = useReducer(buttonReducer, '0');
+    const [state, dispatch] = useReducer(buttonReducer, {display: '0', evaluationString: ''});
 
     return (
-        <DisplayContext.Provider value={display}>
-            <DisplayDispatchContext.Provider value={dispatch}>
-                <OperatorFlagContext.Provider value={operatorFlag}>
-                    <OperatorFlagActionContext.Provider value={operatorFlagAction}>
+        <StateContext.Provider value={state}>
+            <StateDispatchContext.Provider value={dispatch}>
                         {children}
-                    </OperatorFlagActionContext.Provider>
-                </OperatorFlagContext.Provider>
-            </DisplayDispatchContext.Provider>
-        </DisplayContext.Provider>
+            </StateDispatchContext.Provider>
+        </StateContext.Provider>
     );
 }
 
 DisplayProvider.propTypes = {
     children: PropTypes.array,
 };
-function operatorFlagReducer(operatorFlag, action){
-    return action.value;
-}
-function buttonReducer(display, action) {
+
+function buttonReducer(state, action) {
 
     switch(action.type){
         case 'number': {
-            if (display == '0' || action.flag == true ){
-                return action.value;
+            if(state.evaluationString == '0'){
+                return {...state, display: action.value, evaluationString: action.value};
             } else {
-                return display + action.value;
+                return {...state, display: state.evaluationString + action.value, evaluationString: state.evaluationString + action.value};
+            }
+        }
+        case 'operator': {
+            if(state.evaluationString == '0'){
+                return {...state, display: state.display + action.value, evaluationString: state.display + action.value};
+            } else {
+                return {...state, display: state.evaluationString + action.value, evaluationString: state.evaluationString + action.value};
             }
         }
         case 'clear':{
-            return '0';
-        }
-        case 'operator':{
-            return display + action.value;
+            return {...state, display: '0', evaluationString: ''};
         }
         case 'equal':{
             try {
-                let answer = evaluate(display);
-                return answer;
+                let answer = evaluate(state.evaluationString);
+                return {...state, display: answer, evaluationString: '0'};
             }
             catch(err) {
-                return 'my chips are burning';
+                return {...state, display: 'my chips are burning', evaluationString: ''};
             }
         }
         default: {
-            return 'i have no idea';
+            return {...state, display: 'i have no idea', evaluationString: ''};
         }
     }
 }
