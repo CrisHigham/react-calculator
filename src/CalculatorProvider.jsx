@@ -6,7 +6,7 @@ export const StateContext = createContext({display: '0', evaluationString: ''});
 export const StateDispatchContext = createContext(null);
 
 export function DisplayProvider({ children }) {
-    const [state, dispatch] = useReducer(buttonReducer, {display: '0', evaluationString: ''});
+    const [state, dispatch] = useReducer(buttonReducer, {display: '0', evaluationString: '', history: []});
 
     return (
         <StateContext.Provider value={state}>
@@ -44,7 +44,8 @@ function buttonReducer(state, action) {
         case 'equal':{
             try {
                 let answer = evaluate(state.evaluationString);
-                return {...state, display: answer, evaluationString: '0'};
+                let historyEntry = state.evaluationString + '=' + answer;
+                return {...state, display: answer, evaluationString: '0', history: [...state.history, historyEntry]};
             }
             catch(err) {
                 return {...state, display: 'my chips are burning', evaluationString: ''};
