@@ -21,7 +21,7 @@ const Button = (props) => {
 
   return (
       <button
-          className={`flex flex-col justify-center text-center py-2 rounded-md h-full w-full font-mono ${buttonStyle[props.style]} ${props.additionalClasses}`}
+          className={`flex flex-col justify-center items-center py-2 rounded-md h-full w-full font-mono ${buttonStyle[props.style]} ${props.additionalClasses}`}
           onClick={()=>handleClick(props.text)}>{props.text}</button>
   )
 }

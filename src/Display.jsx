@@ -6,6 +6,7 @@ function Display() {
     const textareaRef = useRef(null);
 
     useEffect(() => {
+        // Sorting out the textarea auto height
         if (textareaRef.current) {
             textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
         }
@@ -14,8 +15,9 @@ function Display() {
   return (
     <>
           <textarea
+              id="displayArea"
               ref={textareaRef}
-              rows={"1"}
+              rows="1"
               className="resize-none overflow-hidden bg-slate-400 my-2 rounded p-2 text-right w-full"
               value={state.display}
               disabled
@@ -25,3 +27,5 @@ function Display() {
 }
 
 export default Display;
+
+
