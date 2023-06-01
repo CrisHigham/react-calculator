@@ -3,10 +3,6 @@ import Keypad from "./Keypad.jsx";
 import {DisplayProvider} from "./CalculatorProvider.jsx";
 
 function App() {
-    const handleKey = (event) => {
-        console.log(event.key);
-    };
-    window.addEventListener('keydown', handleKey);
 
   return (
     <>
