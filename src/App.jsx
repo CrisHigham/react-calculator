@@ -1,10 +1,13 @@
+import { createPortal } from 'react-dom';
 import Display from "./Display.jsx";
 import Keypad from "./Keypad.jsx";
+import HistoryContent from "./HistoryContent.jsx"
 import {DisplayProvider} from "./CalculatorProvider.jsx";
 
 function App() {
+    const historyElement = document.getElementById('historyText');
 
-  return (
+    return (
     <>
         <DisplayProvider>
             <div className="container max-w-xs mx-auto font-mono">
@@ -15,6 +18,10 @@ function App() {
                     </div>
                 </div>
             </div>
+            {createPortal(
+                <HistoryContent />,
+                historyElement
+            )}
         </DisplayProvider>
     </>
   )
