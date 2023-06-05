@@ -12,9 +12,11 @@ export function DisplayProvider({ children }) {
     const handleKey = (event) => {
         const keys = {"number": ['0','1','2','3','4','5','6','7','8','9'],
                     "operator": ['+','-','/','*','%'],
-                    "equal": ['=', 'Enter']};
+                    "equal": ['=', 'Enter'],
+                    "clear": ['Escape']};
 
         var keyStroke = event.key;
+        console.log(keyStroke);
         for (const [key, value] of Object.entries(keys)){
             if(value.includes(keyStroke)){
                 dispatch({
@@ -47,11 +49,17 @@ DisplayProvider.propTypes = {
 };
 
 function buttonReducer(state, action) {
-    const singlePressKeys = ['+', '-', '/', '*', '%', '.'];
-    if (singlePressKeys.includes(action.value)){
-        action.type=
-    }
-    switch(action.type){
+    // const singlePressKeys = ['+', '-', '/', '*', '%', '.'];
+    // var actionType = '';
+    // if (!singlePressKeys.includes(action.value)){
+    //     actionType ='do nothing';
+    // } else {
+        let actionType = action.type;
+    // }
+    switch(actionType){
+        case 'do nothing': {
+            return {...state};
+        }
         case 'number': {
             if(state.evaluationString == '0' || state.evaluationString == 'Infinity'){
                 return {...state, display: action.value, evaluationString: action.value};
