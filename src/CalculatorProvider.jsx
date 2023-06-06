@@ -45,7 +45,7 @@ export function DisplayProvider({ children }) {
 }
 
 DisplayProvider.propTypes = {
-    children: PropTypes.object,
+    children: PropTypes.array,
 };
 
 function buttonReducer(state, action) {

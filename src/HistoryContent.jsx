@@ -4,7 +4,7 @@ import {StateContext, StateDispatchContext} from "./CalculatorProvider.jsx";
 function HistoryContent() {
     const state = useContext(StateContext);
     const dispatch = useContext(StateDispatchContext);
-    const historyText = [...state.history];
+    const historyTextArray = [...state.history];
 
     function handleClick(answer){
         dispatch({
@@ -26,8 +26,8 @@ function HistoryContent() {
                 onClick={()=>clearHistory()}>Clear History</button>
         </p>
         {
-            historyText.reverse().map((value, index) => (
-            <p className="hover:bg-amber-500 p-1 rounded hover:text-black hover:opacity-100" style={{ opacity: 1 - index * 0.1 }}
+            historyTextArray.reverse().map((value, index) => (
+            <p key={index} className="hover:bg-amber-500 p-1 rounded hover:text-black hover:opacity-100" style={{ opacity: 1 - index * 0.1 }}
                onClick={()=>handleClick(value.split('=')[1])}>{value}</p>
         ))}
     </>
