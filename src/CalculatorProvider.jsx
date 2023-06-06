@@ -49,13 +49,14 @@ DisplayProvider.propTypes = {
 };
 
 function buttonReducer(state, action) {
-    // const singlePressKeys = ['+', '-', '/', '*', '%', '.'];
-    // var actionType = '';
-    // if (!singlePressKeys.includes(action.value)){
-    //     actionType ='do nothing';
-    // } else {
-        let actionType = action.type;
-    // }
+    const singlePressKeys = ['+', '-', '/', '*', '%', '.'];
+    let actionType = '';
+    let lastKey = state.evaluationString[state.evaluationString.length - 1]
+    if (singlePressKeys.includes(action.value) && singlePressKeys.includes(lastKey)){
+        actionType ='do nothing';
+    } else {
+       actionType = action.type;
+    }
     switch(actionType){
         case 'do nothing': {
             return {...state};
