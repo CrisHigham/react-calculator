@@ -8,6 +8,7 @@ function Display() {
     useEffect(() => {
         // Sorting out the textarea auto height
         if (textareaRef.current) {
+            textareaRef.current.style.height = 'auto';
             textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
         }
     }, [state.display]);
