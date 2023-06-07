@@ -16,7 +16,7 @@ export function DisplayProvider({ children }) {
                     "clear": ['Escape']};
 
         var keyStroke = event.key;
-        //console.log(keyStroke);
+
         for (const [key, value] of Object.entries(keys)){
             if(value.includes(keyStroke)){
                 dispatch({
@@ -49,6 +49,7 @@ DisplayProvider.propTypes = {
 };
 
 function buttonReducer(state, action) {
+    console.log(action.value);
     const singlePressKeys = ['+', '-', '/', '*', '%', '.'];
     let actionType = '';
     let lastKey = state.evaluationString[state.evaluationString.length - 1]

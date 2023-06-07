@@ -22,6 +22,8 @@ function HistoryContent() {
     <>
         <p>
             Click sum to use answer
+        </p>
+        <p>
             <button className="bg-slate-600 p-1 rounded hover:bg-slate-400 m-1 hover:text-black"
                 onClick={()=>clearHistory()}>Clear History</button>
         </p>

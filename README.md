@@ -6,4 +6,4 @@ Calulator app as first foray into React. Uses MathJs as the actual calculation e
 
 ###Known bugs
 + After the use of the buttons, the Enter on the keyboard seems to stroke twice.
-+ For long sums the history shoots off to the side, needs some kind of wrap
++ Use of / engages the search bar in Firefox
