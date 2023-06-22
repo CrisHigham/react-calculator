@@ -29,8 +29,10 @@ function HistoryContent() {
         </p>
         {
             historyTextArray.reverse().map((value, index) => (
-            <p key={index} className="hover:bg-amber-500 p-1 rounded hover:text-black hover:opacity-100" style={{ opacity: 1 - index * 0.1 }}
-               onClick={()=>handleClick(value.split('=')[1])}>{value}</p>
+            <p key={index}>
+                <button className="hover:bg-amber-500 p-1 rounded hover:text-black hover:opacity-100 {{ opacity: 1 - index * 0.1 }}"
+                   onClick={()=>handleClick(value.split('=')[1])}>{value}</button>
+            </p>
         ))}
     </>
   )
